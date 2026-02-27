@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página 00</title>
+    <title>Página 01</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -13,11 +13,27 @@
     <div id="root"></div>
 
     <script type="text/babel">
+      const Titulo = function() {
+        return(
+          <h1>Games Clássicos</h1>
+        )
+      }
+
+      const Game = function() {
+        return(
+          <ul>
+            <li>Título: Seaquest</li>
+            <li>Ano de lançamento: 1983</li>
+            <li>Console: Atari 2600</li>
+          </ul>
+        )
+      }
+
       const App = function() {
         return(
           <>
-            <h1>Desenvolvimento Mobile</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt quas doloribus a expedita voluptatum ipsum rerum repellendus fugiat corrupti libero nam, nulla reprehenderit, suscipit illo commodi sint blanditiis ipsa reiciendis!</p>
+            <Titulo />
+            <Game />
           </>
         )
       }
