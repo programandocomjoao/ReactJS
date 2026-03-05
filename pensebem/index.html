@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pense Bem</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="estilos.css">
+  </head>
 
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const Titulo = function() {
+        return(
+          <img src="LogoTectoy.png" id="logo" />
+        )
+      }
+
+      const Saida = function() {
+        return(
+          <>
+            <p><input id="tela1" readonly value="*" /></p>
+            <p><input id="tela2" readonly value="Tentativa 1 de 3" /></p>
+          </>
+        )
+      }
+
+      const Controle = function() {
+        return(
+          <p>
+            <input type="button" id="botaoA" class="botao" value="A" />
+            <input type="button" id="botaoB" class="botao" value="B" />
+            <input type="button" id="botaoC" class="botao" value="C" />
+            <input type="button" id="botaoD" class="botao" value="D" />
+          </p>
+        )
+      }
+
+      const App = function() {
+        return(
+          <div id="app">
+            <Titulo />
+            <Saida />
+            <Controle />
+          </div>
+        )
+      }
+
+      ReactDOM.render(
+        <App />,
+        document.getElementById('root')
+      )
+    </script>
+  </body>
+</html>
