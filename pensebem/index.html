@@ -14,6 +14,18 @@
     <div id="root"></div>
 
     <script type="text/babel">
+      class Dados {
+        static programa = 0
+        static pergunta = 1
+        static tentativa = 1
+        static pontos = 0
+        static gabarito = new Array(5)
+
+        static gabarito021 = new Array('B', 'A', 'A', 'D', 'C')
+        static gabarito022 = new Array('B', 'B', 'A', 'B', 'A')
+        static gabarito023 = new Array('B', 'A', 'D', 'C', 'B')
+      }
+
       const Titulo = function() {
         return(
           <img src="LogoTectoy.png" id="logo" />
@@ -24,18 +36,84 @@
         return(
           <>
             <p><input id="tela1" readonly value="*" /></p>
-            <p><input id="tela2" readonly value="Tentativa 1 de 3" /></p>
+            <p><input id="tela2" readonly value="*" /></p>
           </>
         )
       }
 
       const Controle = function() {
+        const jogar = (resposta) => {
+          document.getElementById('tela1').value = `${Dados.programa}->${Dados.pergunta}:${resposta}`
+          
+          if(resposta == Dados.gabarito[Dados.pergunta-1]) {
+            document.getElementById('tela1').style.border = 'green 3px solid'
+
+            if(Dados.tentativa == 1)
+              Dados.pontos += 3
+            if(Dados.tentativa == 2)
+              Dados.pontos += 2
+            else if(Dados.tentativa == 1)
+              Dados.pontos++
+
+            Dados.pergunta++
+            Dados.tentativa = 1
+          }
+          else {
+            document.getElementById('tela1').style.border = 'red 3px solid'
+
+            Dados.tentativa++
+
+            if(Dados.tentativa > 3) {
+              Dados.pergunta++
+              Dados.tentativa = 1
+            }
+          }
+
+          document.getElementById('tela1').value = `${Dados.programa}->${Dados.pergunta}:${resposta}`
+          document.getElementById('tela2').value = `Tentativa ${Dados.tentativa} de 3`
+
+          if(Dados.pergunta > 5) {
+            document.getElementById('tela1').value = '***FIM***'
+            document.getElementById('tela2').value = `Pontuação: ${Dados.pontos}`
+          }
+        }
+
         return(
           <p>
-            <input type="button" id="botaoA" class="botao" value="A" />
-            <input type="button" id="botaoB" class="botao" value="B" />
-            <input type="button" id="botaoC" class="botao" value="C" />
-            <input type="button" id="botaoD" class="botao" value="D" />
+            <input type="button" id="botaoA" class="botao" value="A" onClick={() => jogar('A')} />
+            <input type="button" id="botaoB" class="botao" value="B" onClick={() => jogar('B')} />
+            <input type="button" id="botaoC" class="botao" value="C" onClick={() => jogar('C')} />
+            <input type="button" id="botaoD" class="botao" value="D" onClick={() => jogar('D')} />
+          </p>
+        )
+      }
+
+      const Start = function() {
+        const iniciar = () => {
+          Dados.programa = prompt('Digite o código do programa(021 a 023):', '')
+
+          if(Dados.programa == '021')
+            Dados.gabarito = Dados.gabarito021
+          else if(Dados.programa == '022')
+            Dados.gabarito = Dados.gabarito022
+          else if(Dados.programa == '023')
+            Dados.gabarito = Dados.gabarito023
+          else {
+            alert('Código de programa inválido!\nDigite um código entre 021 e 023!')
+            iniciar()
+          }
+
+          Dados.pergunta = 1
+          Dados.tentativa = 1
+          Dados.pontos = 0
+
+          document.getElementById('tela1').value = `${Dados.programa}->${Dados.pergunta}`
+          document.getElementById('tela2').value = `Tentativa ${Dados.tentativa} de 3`
+        }
+
+        return(
+          <p>
+            <input type="button" id="botaoStart" value="Start/Reset" onClick={iniciar} />
           </p>
         )
       }
@@ -46,6 +124,7 @@
             <Titulo />
             <Saida />
             <Controle />
+            <Start />
           </div>
         )
       }
