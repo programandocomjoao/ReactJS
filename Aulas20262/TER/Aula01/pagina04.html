@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 04</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class Titulo extends React.Component {
+        render() {
+          return (
+            <h1>Consoles Clássicos</h1>
+          )
+        }
+      }
+
+      class Game extends React.Component {
+        constructor(props) {
+          super(props)
+          this.descricao = props.descricao
+          this.ano = props.ano
+          this.fabricante = props.fabricante
+        }
+
+        render() {
+          return(
+            <ul>
+              <li>Descrição: {this.descricao}</li>
+              <li>Ano de lançamento: {this.ano}</li>
+              <li>Fabricante: {this.fabricante}</li>
+            </ul>
+          )
+        }
+      }
+
+      class App extends React.Component {
+        render() {
+          return(
+            <>
+              <Titulo />
+              <Game descricao="Atari 2600" ano="1977" fabricante="Polivox" />
+              <Game descricao="Telejogo" ano="1975" fabricante="Ford Philco" />
+              <Game descricao="Magnavox Odyssey" ano="1978" fabricante="Philips" />
+              <Game descricao="Phantom System" ano="1988" fabricante="Gradiente" />
+              <Game descricao="Mega Drive" ano="1989" fabricante="TecToy" />
+            </>
+          )
+        }
+      }
+
+      ReactDOM.render(
+        <App />,
+        document.getElementById('root')
+      )
+    </script>
+  </body>
+</html>
