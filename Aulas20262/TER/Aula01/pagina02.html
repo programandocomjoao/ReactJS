@@ -8,7 +8,6 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
-
   <body>
     <div id="root"></div>
 
@@ -19,15 +18,13 @@
         )
       }
 
-      function Game(props) {
+      function Game() {
         return(
-          <>
-          <h2>{props.titulo}</h2>
-            <ul>
-              <li>Ano de lançamento: {props.ano}</li>
-              <li>Console: {props.console}</li>
-            </ul>
-          </>
+          <ul>
+            <li>Título: Seaquest</li>
+            <li>Ano de lançamento: 1983</li>
+            <li>Console: Atari 2600</li>
+          </ul>
         )
       }
 
@@ -35,14 +32,10 @@
         return (
           <>
             <Titulo />
-            <Game titulo="Seaquest" ano="1983" console="Atari 2600" />
-            <Game titulo="Futebol" ano="1977" console="Telejogo" />
-            <Game titulo="Come-Come!" ano="1982" console="Magnavox Odyssey" />
-            <Game titulo="Super Mario Bros" ano="1985" console="Nintendo (NES)" />
-            <Game titulo="Sonic The Hedgehog" ano="1991" console="Master System" />
+            <Game />
           </>
         )
-      }     
+      }
 
       ReactDOM.render(
         <App />,

@@ -2,7 +2,7 @@ import './App.css'
 
 function App() {
   return (
-    <h1>Seja Bem-Vindo</h1>
+    <h1>Games Clássicos</h1>
   )
 }
 
